@@ -1,0 +1,12 @@
+{
+ "baseUrl": "https://testbertrand.dokeos.preprod.belighted.com/fr/users/sign_in",
+  "viewportWidth": 1301,
+  "viewportHeight": 800,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
+}
+

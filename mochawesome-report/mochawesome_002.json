@@ -1,0 +1,123 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-06-10T08:28:58.574Z",
+    "end": "2020-06-10T08:29:37.416Z",
+    "duration": 38842,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6bb74058-0694-4dcc-a42a-00aaeadb9b82",
+      "title": "",
+      "fullFile": "cypress/integration/module.spec.js",
+      "file": "cypress/integration/module.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3702a597-42bc-43fa-b481-6431681bf020",
+          "title": "Testing scenarios related to createModule  Page ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify User will not be able to publish a module with empty title",
+              "fullTitle": "Testing scenarios related to createModule  Page  verify User will not be able to publish a module with empty title",
+              "timedOut": null,
+              "duration": 20434,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_createmodule.default.getCreateAModuleMenuButton().click({\n  force: true\n});\n_createmodule.default.getLearningModuleButton().click();\n_createmodule.default.getPublishButton().click();\n_createmodule.default.getconfirmPublishPopup().click(); //Assert Message\n\ncy.contains(\"Title must be filled, Estimated Minutes must be filled, and Estimated Minutes must be greater than or equal to 0\").should('be.visible');",
+              "err": {},
+              "uuid": "692b4f36-0592-4b31-b2e3-c890f6f39dd6",
+              "parentUUID": "3702a597-42bc-43fa-b481-6431681bf020",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User will be able to pusblish a  module When all required fields are filled (title/DurationinMinites)",
+              "fullTitle": "Testing scenarios related to createModule  Page  Verify User will be able to pusblish a  module When all required fields are filled (title/DurationinMinites)",
+              "timedOut": null,
+              "duration": 17241,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_createmodule.default.getCreateAModuleMenuButton().click({\n  force: true\n});\n_createmodule.default.getLearningModuleButton().click();\nmodule = _helpers.default.getGeneratedModuleTitle();\n_createmodule.default.getModuleTitleField().type(module);\n_createmodule.default.setDurationInMiniuteSlideBar();\ncy.wait(1000);\n_createmodule.default.getPublishButton().click();\n_createmodule.default.getconfirmPublishPopup().click();\ncy.contains(module).should('be.visible');",
+              "err": {},
+              "uuid": "d5b6bb12-3dce-4e6a-99ee-a64ef908efbd",
+              "parentUUID": "3702a597-42bc-43fa-b481-6431681bf020",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "692b4f36-0592-4b31-b2e3-c890f6f39dd6",
+            "d5b6bb12-3dce-4e6a-99ee-a64ef908efbd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 37675,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

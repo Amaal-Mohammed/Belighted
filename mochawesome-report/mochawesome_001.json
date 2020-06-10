@@ -1,0 +1,123 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-06-10T08:28:34.005Z",
+    "end": "2020-06-10T08:28:50.339Z",
+    "duration": 16334,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a713fdb0-98f2-4938-9766-a85941d0c9fb",
+      "title": "",
+      "fullFile": "cypress/integration/login.spec.js",
+      "file": "cypress/integration/login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fe3d563c-18f4-49b8-93e0-90db0e475c8c",
+          "title": "Testing scenarios related to Login Page ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify that User is logged in successully with valid email and password",
+              "fullTitle": "Testing scenarios related to Login Page  Verify that User is logged in successully with valid email and password",
+              "timedOut": null,
+              "duration": 10975,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"login.json\", \"binary\").then(function (data) {\n  cy.login(data.email, data.password);\n});\n_mytrainings.default.getProfileDropdownName().contains(\"Michael Albert\").should('be.exist');",
+              "err": {},
+              "uuid": "ac899c1b-8e83-4597-b18a-1e3149392868",
+              "parentUUID": "fe3d563c-18f4-49b8-93e0-90db0e475c8c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify that User can not login successully with invalid email and password",
+              "fullTitle": "Testing scenarios related to Login Page  Verify that User can not login successully with invalid email and password",
+              "timedOut": null,
+              "duration": 4199,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"login.json\", \"binary\").then(function (data) {\n  _login.default.getEmail(data.invalidemail).click();\n  _login.default.getPassword().type(data.password);\n  _login.default.getSubmit().click();\n});",
+              "err": {},
+              "uuid": "0dc54875-463f-4689-99cd-763f0b53c89b",
+              "parentUUID": "fe3d563c-18f4-49b8-93e0-90db0e475c8c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ac899c1b-8e83-4597-b18a-1e3149392868",
+            "0dc54875-463f-4689-99cd-763f0b53c89b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15174,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

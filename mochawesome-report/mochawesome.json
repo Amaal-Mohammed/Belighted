@@ -1,0 +1,223 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 6,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-06-10T08:26:48.875Z",
+    "end": "2020-06-10T08:28:06.342Z",
+    "duration": 77467,
+    "testsRegistered": 7,
+    "passPercent": 85.71428571428571,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fa9e124f-b5aa-45ff-b8a0-a4d92061e91f",
+      "title": "",
+      "fullFile": "cypress/integration/login_module_training_invitationete.js",
+      "file": "cypress/integration/login_module_training_invitationete.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+          "title": "End to end Test from Creating module then Training and finally Inviting Partcipants",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify that User is logged in successully",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify that User is logged in successully",
+              "timedOut": null,
+              "duration": 21724,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_mytrainings.default.getProfileDropdownName().contains(\"Michael Albert\").should('be.exist');",
+              "err": {},
+              "uuid": "c179e668-2d59-4878-99e5-000654a43f48",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify User will not be able to publish a module with empty title",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants verify User will not be able to publish a module with empty title",
+              "timedOut": null,
+              "duration": 5721,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_createmodule.default.getCreateAModuleMenuButton().click({\n  force: true\n});\n_createmodule.default.getLearningModuleButton().click();\n_createmodule.default.getPublishButton().click();\n_createmodule.default.getconfirmPublishPopup().click(); //Assert Message\n\ncy.contains(\"Title must be filled, Estimated Minutes must be filled, and Estimated Minutes must be greater than or equal to 0\").should('be.visible');",
+              "err": {},
+              "uuid": "cd27af39-37d8-4b17-9b59-3e5b72a4c47e",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User will be able to pusblish a  module When all required fields are filled (title/DurationinMinites)",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify User will be able to pusblish a  module When all required fields are filled (title/DurationinMinites)",
+              "timedOut": null,
+              "duration": 7844,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_createmodule.default.getCreateAModuleMenuButton().click({\n  force: true\n});\n_createmodule.default.getLearningModuleButton().click(); // module = \"Module\" + (Math.random() * 1000)\n\nmodule = _helpers.default.getGeneratedModuleTitle(); //Save Created Module Name into file to be used later\ncy.writeFile('module.txt', module);\n_createmodule.default.getModuleTitleField().type(module);\n_createmodule.default.setDurationInMiniuteSlideBar();\ncy.wait(1000);\n_createmodule.default.getPublishButton().click();\n_createmodule.default.getconfirmPublishPopup().click();\ncy.contains(module).should('be.visible');",
+              "err": {},
+              "uuid": "3c42c9ab-c4ea-4e52-a2c3-0bda54424257",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User will be able to Update the created Module By adding Card and External content",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify User will be able to Update the created Module By adding Card and External content",
+              "timedOut": null,
+              "duration": 8026,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_mymodule.default.getMyModuleMenuBarbutton().click();\n_mymodule.default.getLastCreatedModule().click();\n_createmodule.default.getCard().click();\ncy.on('uncaught:exception', function (err) {\n  expect(err.message).to.include('Ignoring error for now');\n  return false;\n});\ncy.fixture(\"module.json\", \"binary\").then(function (data) {\n  cy.wait(1000);\n  _createmodule.default.getModuleTitleField().type(data.CardTitle);\n});\n/*\n const fileName = 'logo.jpg'\n    cy.fixture(fileName).then(fileContent => {\n     cy.get('input[data-purpose=\"file_input\"]').attachFile(fileName);\n     //cy.get('input[type=\"file\"]').attachFile({ fileContent, fileName, mimeType: 'application/json' });\n     \n      });\n\n*/\n// ModuleCreatePage.getSaveCard().click()\n_createmodule.default.getExternalContent().click();\ncy.wait(1000);\ncy.fixture(\"module.json\", \"binary\").then(function (data) {\n  _createmodule.default.getModuleTitleField().type(data.External);\n});\n_createmodule.default.getEmbedButton().click({\n  force: true\n});\n_createmodule.default.getEmbedTxtArea().then(function (elem) {\n  elem.val(codeBlock);\n});\n_helpers.default.getCookieDisclaimerButton().click(); // MyTraining.getMyTrainingMenuBarButton().click()",
+              "err": {},
+              "uuid": "80dc131d-3790-4b31-afec-3a26ad197f8b",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User Can not  publish a Training with empty title",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify User Can not  publish a Training with empty title",
+              "timedOut": null,
+              "duration": 16828,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.wait(1000);\n_mytrainings.default.getMyTrainingMenuBarButton().click();\n_createtraining.default.getCreateTrainingMenuButton().click({\n  force: true\n});\ncy.wait(1000);\n_helpers.default.getCookieDisclaimerButton().click();\n_createtraining.default.getPublishButton().click();\n_createtraining.default.getconfirmPublishPopup().click(); //Assert \n\ncy.contains(\"Title must be filled, Training Cover must be filled, Training Modules must be filled, and Training Modules size cannot be less than 1\").should('be.visible');",
+              "err": {
+                "message": "CypressError: Timed out retrying: Expected to find content: 'Title must be filled, Training Cover must be filled, Training Modules must be filled, and Training Modules size cannot be less than 1' but never did.",
+                "estack": "CypressError: Timed out retrying: Expected to find content: 'Title must be filled, Training Cover must be filled, Training Modules must be filled, and Training Modules size cannot be less than 1' but never did.\n    at Object.cypressErr (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:86207:11)\n    at Object.throwErr (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:86162:18)\n    at Object.throwErrByPath (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:86194:17)\n    at retry (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:76849:16)\n    at onFailFn (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:65634:16)\n    at tryCatcher (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:120203:23)\n    at Promise._settlePromiseFromHandler (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:118139:31)\n    at Promise._settlePromise (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:118196:18)\n    at Promise._settlePromise0 (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:118241:10)\n    at Promise._settlePromises (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:118316:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:114928:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:114938:10)\n    at Async.drainQueues (https://testbertrand.dokeos.preprod.belighted.com/__cypress/runner/cypress_runner.js:114812:14)",
+                "diff": null
+              },
+              "uuid": "8828f4f1-6370-456c-a965-3548ac80d96c",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User Can publish Training when all Reuired fields are filled (title)",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify User Can publish Training when all Reuired fields are filled (title)",
+              "timedOut": null,
+              "duration": 5128,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "training = _helpers.default.getGeneratedTrainingTitle();\ncy.writeFile('training.txt', training);\n_createtraining.default.getTrainingTitleField().type(training);\n_createtraining.default.getOPenCoverPickerButton().click();\n_createtraining.default.getCover().click();\n_createtraining.default.getNextStepButton().click();\n_createtraining.default.getLearningModuleButton().click();\ncy.readFile('module.txt').then(function (text) {\n  cy.get('input[data-purpose=\"search_input\"]').type(text);\n});\n_createtraining.default.getAddbutton().click();\n_createtraining.default.getSubmitButton().click();\n_createtraining.default.getNextStepButton().click();\n_createtraining.default.getNextStepButton().click();\n_createtraining.default.getPublishButton().click();\n_createtraining.default.getconfirmPublishPopup().click();",
+              "err": {},
+              "uuid": "a3c64546-4825-45f1-bde6-30aaf52729d1",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify User Can invite participants to the created Training",
+              "fullTitle": "End to end Test from Creating module then Training and finally Inviting Partcipants Verify User Can invite participants to the created Training",
+              "timedOut": null,
+              "duration": 8448,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_mytrainings.default.getMyTrainingMenuBarButton().click();\ncy.readFile('training.txt').then(function (text) {\n  cy.get('input[data-purpose=\"filter_query_input\"]').type(text);\n});\ncy.wait(1000);\n_mytrainings.default.getEyeIcon().click();\n_createtraining.default.getParticiplantsTab().click();\n_createtraining.default.getAddParticipantsButton().click();\ncy.fixture(\"InviteParticipants.json\", \"binary\").then(function (data) {\n  _createtraining.default.getSearch().type(data.participantname);\n});\ncy.wait(1000);\n_createtraining.default.getAddallButton().click();\n_createtraining.default.getSubmitButton().click();\n_createtraining.default.getSendEmailButton().click();\ncy.fixture(\"InviteParticipants.json\", \"binary\").then(function (data) {\n  _mail.default.getEmailTitleField().type(data.Invitationtitle);\n});\n_mail.default.getSendEmail().click();",
+              "err": {},
+              "uuid": "bc62d170-f056-47cb-8902-23f06d02f84b",
+              "parentUUID": "e3cb49b8-dca4-4194-bc68-5d9f585a4b29",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c179e668-2d59-4878-99e5-000654a43f48",
+            "cd27af39-37d8-4b17-9b59-3e5b72a4c47e",
+            "3c42c9ab-c4ea-4e52-a2c3-0bda54424257",
+            "80dc131d-3790-4b31-afec-3a26ad197f8b",
+            "a3c64546-4825-45f1-bde6-30aaf52729d1",
+            "bc62d170-f056-47cb-8902-23f06d02f84b"
+          ],
+          "failures": [
+            "8828f4f1-6370-456c-a965-3548ac80d96c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 73719,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
