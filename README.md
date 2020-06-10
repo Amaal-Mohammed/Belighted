@@ -18,3 +18,6 @@ Release notes:
 * login_module_training_invitationete.spec: Test# 4 : Performance issue in the application when user tries upload an image in the card (it takes more than 1 min , was executed both Manual and autimation)
 * All and all the system has lots of Localization issues
 
+Notes:
+* Tests include both ete path and also have tests that can be scalable in teh futhure if if tests are needed for a specific page
+* Report of the testing tool is in folder mochawesome-report/mochawesome.html
