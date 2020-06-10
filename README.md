@@ -19,5 +19,5 @@ Release notes:
 * All and all the system has lots of Localization issues
 
 Notes:
-* Tests include both ete path and also have tests that can be scalable in teh futhure if if tests are needed for a specific page
+* Tests include both ete path and also have tests that can be scalable in teh futhure if if tests are needed for a specific page(Please Check the testplan "BelightedTestPlan")
 * Report of the testing tool is in folder mochawesome-report/mochawesome.html
